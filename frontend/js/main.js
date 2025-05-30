@@ -27,11 +27,11 @@ function showData(result) {
     let showButton = document.createElement('a');
     let deleteButton = document.createElement('a');
     let postId = element['id'];
-    showButton.setAttribute('href', `http://localhost/courseProject/show.html?id=${postId}`);
+    showButton.setAttribute('href', `http://localhost/courseProject/frontend/show.html?id=${postId}`);
     updateButton.className = 'btn btn-primary';
-    updateButton.setAttribute('href', `http://localhost/courseProject/update.html?id=${postId}`);
+    updateButton.setAttribute('href', `http://localhost/courseProject/frontend/update.html?id=${postId}`);
     updateButton.textContent = 'update';
-    deleteButton.setAttribute('href', `http://localhost/courseProject/delete.html?id=${postId}`);
+    deleteButton.setAttribute('href', `http://localhost/courseProject/frontend/delete.html?id=${postId}`);
     showButton.className = 'btn btn-success mx-1';
     showButton.textContent = 'show';
     deleteButton.className = 'btn btn-danger';
