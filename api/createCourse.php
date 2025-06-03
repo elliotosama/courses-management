@@ -11,16 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $location = $data['location'] ?? '';
     $sessionTaken = $data['session_taken'] ?? 0;
     $time = $data['time'] ?? '';
+    $day1 = $data['day1'] ?? '';
+    $day2 = $data['day2'] ?? '';
 
-    $stmt = $conn->prepare("INSERT INTO `courses` (`name`, `start_date`, `end_date`, `location`, `time`, `session_taken`, `done`) VALUES (?, ?, ?, ?, ?, ?, 0)");
-    $stmt->bind_param("sssssi", $courseName, $startDate, $endDate, $location, $time, $sessionTaken);
+    $query = "INSERT INTO courses (name, start_date, end_date, location, time, session_taken, done, day1, day2) VALUES ('$courseName', '$startDate', '$endDate', '$location', '$time', $sessionTaken, 0, '$day1', '$day2')";
+    $result = $conn->query($query);
 
-    if ($stmt->execute()) {
+    if ($result) {
         echo json_encode(['status' => 'success']);
     } else {
         echo json_encode([
             'status' => 'error',
-            'message' => $stmt->error
         ]);
     }
 

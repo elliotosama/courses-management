@@ -13,8 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sessionTaken = $data['session_taken'];
     $time = $data['time'];
     $done = $data['done'];
+    $day1 = $data['day1'] ?? '';
+    $day2 = $data['day2'] ?? '';
 
-    $stmt = $conn->query("UPDATE courses SET name = '$courseName', start_date = '$startDate', end_date = '$endDate', location = '$location', time = '$time', session_taken = '$sessionTaken', done = '$done' WHERE id = '$id'");
+    $stmt = $conn->query("UPDATE courses SET name = '$courseName', start_date = '$startDate', end_date = '$endDate', location = '$location', time = '$time', session_taken = '$sessionTaken', done = '$done', day1 = '$day1', day2 = '$day2' WHERE id = '$id'");
 
     if ($stmt) {
         echo json_encode(['status' => 'success']);

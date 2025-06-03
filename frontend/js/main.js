@@ -1,7 +1,9 @@
 // fetch('://localhost/courseProject/api/index.php')
 
+let doneCourses = window.location.search.split('=')[1];
+
 async function fetchData() {
-  let response = await fetch('http://localhost/courseProject/api/index.php');
+  let response = await fetch('http://localhost/courseProject/api/index.php?done=' + doneCourses);
   if(response.ok) {
     let data = await response.json();
     showData(data);
@@ -26,6 +28,10 @@ function showData(result) {
     let updateButton = document.createElement('a');
     let showButton = document.createElement('a');
     let deleteButton = document.createElement('a');
+    let day1 = document.createElement('td');
+    let day2 = document.createElement('td');
+    day1.textContent = element['day1'] == '' ? '---' : element['day1'];
+    day2.textContent = element['day2'] == '' ? '---' : element['day2'];
     let postId = element['id'];
     showButton.setAttribute('href', `http://localhost/courseProject/frontend/show.html?id=${postId}`);
     updateButton.className = 'btn btn-primary';
@@ -42,11 +48,12 @@ function showData(result) {
     endDate.textContent = element['end_date'];
     location.textContent = element['location'];
     sessionTaken.textContent = element['session_taken'];
+    sessionTaken.className = 'text-center';
     time.textContent = element['time'];
     actions.appendChild(updateButton)
     actions.appendChild(showButton)
     actions.appendChild(deleteButton)
-    tr.append(id, courseName, startDate, endDate, location, sessionTaken, time, actions);
+    tr.append(id, courseName, startDate, endDate, location, time, sessionTaken, day1, day2, actions);
     table.appendChild(tr)
   });
 }

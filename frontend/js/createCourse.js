@@ -17,8 +17,8 @@ form.addEventListener('submit', function(e) {
     end_date: endDate.value,
     location: loc.value,
     time: courseTime.value,
-    first_day: firstDay.value,
-    second_day: secondDay.value
+    day1: firstDay.value,
+    day2: secondDay.value,
   }
 
 

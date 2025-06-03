@@ -22,5 +22,5 @@ if(confirm('are you sure?')) {
     }
   })
 } else {
-  window.location = 'http://localhost/courseProject/frontend/index.html'
+  window.location = 'http://localhost/courseProject/frontend/index.html?done=false'
 }

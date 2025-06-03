@@ -52,6 +52,8 @@ function showData(dataSent) {
   secondDay.innerHTML = result['day2']
   courseTime.innerHTML = result['time']
   sessionTaken.innerHTML = result['session_taken']
+  firstDay.innerHTML = result['day1'] == '' ? '---' : result['day1'];
+  finished.innerHTML = result['day2'] == '' ? '---' : result['day2'];
   if(result['done'] == '1') {
     finished.innerHTML = 'DONE'
   } else {

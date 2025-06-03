@@ -22,7 +22,7 @@ fetch('http://localhost/courseProject/api/readCourse.php', options)
 .then(response => response.json())
 .then(response => {
   if(response['status'] === 'course not found'){
-    window.location = 'http://localhost/courseProject/frontend/index.html'
+    window.location = 'http://localhost/courseProject/frontend/index.html?done=false'
   } else {
     let course = response['course']
     courseName.value = course['name'];
@@ -32,7 +32,10 @@ fetch('http://localhost/courseProject/api/readCourse.php', options)
     courseTime.value = course['time'];
     firstDay.value = course['first_day'];
     secondDay.value = course['second_day'];
-    sessionTaken.value = course['session_taken']
+    sessionTaken.value = course['session_taken'];
+    firstDay.value = course['day1'];
+    secondDay.value = course['day2'];
+    course['done'] == '1' ? done.checked = true : done.checked = false;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -49,7 +52,9 @@ fetch('http://localhost/courseProject/api/readCourse.php', options)
         location: loc.value,
         time: courseTime.value,
         done: checked,
-        session_taken: sessionTaken.value
+        session_taken: sessionTaken.value,
+        day1: firstDay.value,
+        day2: secondDay.value
       }
       const optionsTwo = {
         method: 'POST',
@@ -62,7 +67,7 @@ fetch('http://localhost/courseProject/api/readCourse.php', options)
           if(one['status'] != 'success') {
             alert('something went wrong')
           } else {
-            window.location = 'http://localhost/courseProject/frontend/index.html';
+            window.location = 'http://localhost/courseProject/frontend/index.html?done=false';
           }
         })
     })
