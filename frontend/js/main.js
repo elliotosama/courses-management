@@ -14,7 +14,9 @@ async function fetchData() {
 
 let table = document.querySelector("tbody")
 function showData(result) {
+  let title = document.getElementById('title');
   let courses = result['courses'];
+  title.textContent = `Courses ${result['count']}`;
   courses.forEach(element => {
     let tr = document.createElement('tr');
     let id = document.createElement('td')

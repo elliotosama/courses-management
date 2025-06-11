@@ -9,7 +9,7 @@ $query = '';
 if($withDone == 'true') {
   $query = "SELECT * FROM courses WHERE done = '1'";
 } else {
-  $query = "SELECT * FROM courses WHERE done = '0'";
+  $query = "SELECT * FROM courses WHERE done = '0' ORDER BY session_taken DESC";
 }
 $result = $conn->query($query);
 $output = ['count' => $result->num_rows, 'courses' => []];
